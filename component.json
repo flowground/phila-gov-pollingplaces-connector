@@ -1,0 +1,50 @@
+{
+    "title": "Polling Places",
+    "description": "\nThis data set contains the list of polling places. It can be organized by ward/division, accessibility rating, or type of building.\n\nThis list is used to assign poll workers, send the machines and necessary accessibility materials, etc.\n\n**Endpoint:** http://api.phila.gov/polling-places/v1\n",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/phila.gov/pollingplaces/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.phila.gov/polling-places/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "get_": {
+            "main": "./lib/actions/get_.js",
+            "title": "Get Polling Places Data",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
